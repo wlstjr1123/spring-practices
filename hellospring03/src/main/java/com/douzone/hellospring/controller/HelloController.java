@@ -1,5 +1,9 @@
 package com.douzone.hellospring.controller;
 
+import java.io.Writer;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,4 +43,8 @@ public class HelloController {
 	public String hello5() {
 		return "<h1>hello world</h1>";
 	}
+//	@RequestMapping("/hello7")
+//	public void hello7(HttpServletRequest req, HttpServletRequest resp, Writer out) {
+//		out.write("<h1>Hello World</h1>");
+//	}
 }
