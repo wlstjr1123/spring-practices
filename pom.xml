@@ -13,7 +13,6 @@
 	</properties>
 	
 	<dependencies>
-	
 	</dependencies>
 	
 	<build>
@@ -39,17 +38,19 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.2.0</version>
 				<configuration>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
 		</plugins>
-	</build>
+	</build>			
 	<modules>
 		<module>hellospring03</module>
 		<module>emaillist03</module>
 		<module>guestbook03</module>
 		<module>logex</module>
 		<module>aoptest</module>
+		<module>fileupload</module>
 	</modules>
 </project>
