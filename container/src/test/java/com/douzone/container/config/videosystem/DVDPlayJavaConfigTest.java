@@ -1,5 +1,6 @@
 package com.douzone.container.config.videosystem;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Rule;
@@ -7,6 +8,7 @@ import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -24,9 +26,18 @@ public class DVDPlayJavaConfigTest {
 	@Autowired
 	private DigitalVideoDisc dvd;
 	
-	/
+	// 같은 타입의 빈이 2개 이상 존재하는 경우 1
+	// 설정 클래스의 빈생성 메소드 이름
+	@Qualifier("dvdPlayer03")
 	@Autowired
-	private DVDPlayer dvdplayer;
+	private DVDPlayer dvdplayer3;
+	
+	// 같은 타입의 빈이 2개 이상 존재하는 경우 1
+	// 설정 클래스의 빈생성 메소드의 @Bean의 name 속성을 사용하는 방법
+	@Qualifier("dvdPlayer04")
+	@Autowired
+	private DVDPlayer dvdplayer4;
+	
 	
 	@Test
 	public void testDVDNotNull() {
@@ -35,8 +46,19 @@ public class DVDPlayJavaConfigTest {
 	
 	
 	@Test
-	public void testDVDPlayerNotNull() {
-		assertNotNull(dvdplayer);
+	public void testDVDPlayer03NotNull() {
+		assertNotNull(dvdplayer3);
+	}
+	
+	@Test
+	public void testDVDPlayer04NotNull() {
+		assertNotNull(dvdplayer4);
+	}
+	
+	@Test
+	public void testPlay() {
+		dvdplayer4.play();
+		assertEquals("Playing Movie MARVEL's Avengers", systemOutRule.getLog().replace("\r\n", "").replace("\n", ""));
 	}
 
 }
